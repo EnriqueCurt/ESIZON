@@ -11,11 +11,10 @@
  int main()
  {
     setlocale(LC_ALL, "spanish");
-    //hacer una prueba de cargar y guardar clientes
     clientes clientes[100];
     int numclientes = 0;
     cargarclientes(clientes, &numclientes);
-    printf("\nEl numero de clientes es: %d\n", numclientes);
+    printf("\nEl numero de clientes es: %d\n", numclientes); //esto es solo para pruebas
     guardarclientes(clientes, numclientes);
     return 0;
  }

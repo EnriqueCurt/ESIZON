@@ -8,20 +8,8 @@
 
 void cargarclientes(clientes *clientes, int *numclientes)
 {
-    //el formato del fichero es: 0000001-Juan Pérez-Plaza San Francisco 1 11100-San FernandoCádiz-juanperez@gmail.com-psw1234-1000
-    //cada campo está separado por un guión
-    //typedef struct{
-    //char id_cliente[8];
-    //char nombre[21];
-    //char direccion[51];
-    //char localidad[21];
-    //char provincia[21];
-    //char email[31];
-    //char password[16];
-    //int cartera;
-    //} clientes;
+    
     FILE *fichero; 
-    //poner ruta del fichero completa
     fichero = fopen("clientes.txt", "r");
     if (!fichero)
     {
@@ -30,10 +18,10 @@ void cargarclientes(clientes *clientes, int *numclientes)
     }
     char linea[300];
     while (fgets(linea, 200, fichero))
-    {
+    {    //formato a leer
         sscanf(linea, "%[^-]-%[^-]-%[^-]-%[^-]-%[^-]-%[^-]-%[^-]-%i\n", clientes[*numclientes].id_cliente, clientes[*numclientes].nombre, clientes[*numclientes].direccion, clientes[*numclientes].localidad, clientes[*numclientes].provincia, clientes[*numclientes].email, clientes[*numclientes].password, &clientes[*numclientes].cartera);
         (*numclientes)++;
-        //imprimir el contenido de la línea
+        //imprimir el contenido de la línea, esto es solo para pruebas
         printf("%s", linea);
     }
     fclose(fichero);
