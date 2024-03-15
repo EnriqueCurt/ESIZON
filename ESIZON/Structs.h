@@ -75,7 +75,7 @@ typedef struct{
     char nombre[21];
     char email[31];
     char password[16];
-    char perfil_usuario[13];
+    char perfil_usuario[14];
 } admin_prov;
 
 typedef struct{
