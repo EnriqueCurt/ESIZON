@@ -39,4 +39,7 @@ void guardarpedidos(pedidos *pedidos, int numpedidos);
 void cargardevoluciones(devoluciones *devoluciones, int *numdevoluciones);
 void guardardevoluciones(devoluciones *devoluciones, int numdevoluciones);
 
+void cargarTodo(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones);
+void guardarTodo(clientes *clientes, int numclientes, transportistas *transportistas, int numtransportistas, productos_pedidos *productos_pedidos, int numproductos_pedido, productos *productos, int numproductos, categorias *categorias, int numcategorias, descuentos *descuentos, int numdescuentos, descuentos_clientes *descuentosclientes, int numdescuentosclientes, lockers *lockers, int numlockers, compartimentos_lockers *compartimentoslockers, int numcompartimentoslockers, admin_prov *admin_prov, int numadmin_prov, pedidos *pedidos, int numpedidos, devoluciones *devoluciones, int numdevoluciones);
+
 #endif

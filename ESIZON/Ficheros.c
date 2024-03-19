@@ -556,6 +556,33 @@ void guardardevoluciones(devoluciones *devoluciones, int numdevoluciones){
     fclose(fichero);
 }
 
+void cargarTodo(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones)
+{
+    cargarclientes(clientes, numclientes);
+    cargartransportistas(transportistas, numtransportistas);
+    cargarproductos_pedidos(productos_pedidos, numproductos_pedido);
+    cargarproductos(productos, numproductos);
+    cargarcategorias(categorias, numcategorias);
+    cargardescuentos(descuentos, numdescuentos);
+    cargardescuentosclientes(descuentosclientes, numdescuentosclientes);
+    cargarlockers(lockers, numlockers);
+    cargarcompartimentoslockers(compartimentoslockers, numcompartimentoslockers);
+    cargaradmin_prov(admin_prov, numadmin_prov);
+    cargarpedidos(pedidos, numpedidos);
+    cargardevoluciones(devoluciones, numdevoluciones);
 
-
-
+}
+void guardarTodo(clientes *clientes, int numclientes, transportistas *transportistas, int numtransportistas, productos_pedidos *productos_pedidos, int numproductos_pedido, productos *productos, int numproductos, categorias *categorias, int numcategorias, descuentos *descuentos, int numdescuentos, descuentos_clientes *descuentosclientes, int numdescuentosclientes, lockers *lockers, int numlockers, compartimentos_lockers *compartimentoslockers, int numcompartimentoslockers, admin_prov *admin_prov, int numadmin_prov, pedidos *pedidos, int numpedidos, devoluciones *devoluciones, int numdevoluciones){
+    guardarclientes(clientes, numclientes);
+    guardartransportistas(transportistas, numtransportistas);
+    guardarproductos_pedidos(productos_pedidos, numproductos_pedido);
+    guardarproductos(productos, numproductos);
+    guardarcategorias(categorias, numcategorias);
+    guardardescuentos(descuentos, numdescuentos);
+    guardardescuentosclientes(descuentosclientes, numdescuentosclientes);
+    guardarlockers(lockers, numlockers);
+    guardarcompartimentoslockers(compartimentoslockers, numcompartimentoslockers);
+    guardaradmin_prov(admin_prov, numadmin_prov);
+    guardarpedidos(pedidos, numpedidos);
+    guardardevoluciones(devoluciones, numdevoluciones);
+}
