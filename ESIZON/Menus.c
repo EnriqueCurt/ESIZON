@@ -6,6 +6,8 @@
 #include <string.h>
 #include <locale.h>
 #include <windows.h>
+#include "Perfil.h"
+#include "Perfil.c"
 
 void menuCliente(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones)
 {
@@ -24,9 +26,31 @@ void menuCliente(clientes *clientes, int *numclientes, transportistas *transport
         fflush(stdin);
         switch(opcion){
             case 1:
-                printf("Perfil\n");
-                system("pause");
-                //perfil(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                system("cls");
+                do{
+                    printf("1. Ver perfil\n");
+                    printf("2. Modificar perfil\n");
+                    printf("3. Salir\n");
+                    printf("Seleccione una opcion: ");
+                    scanf("%d", &opcion);
+                    fflush(stdin);
+                    switch(opcion){
+                        case 1:
+                            mostrarPerfilCliente(clientes, 0);
+                            break;
+                        case 2:
+                            modificarPerfilCliente(clientes, 0);
+                            break;
+                        case 3:
+                            system("cls");
+                            break;
+                        default:
+                            system("cls");
+                            printf("Opcion no valida\n\n");
+                            system("pause");
+                            break;
+                    }
+                }while(opcion != 3);
                 break;
             case 2:
                 printf("Productos\n");
@@ -110,17 +134,17 @@ void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportis
             case 6:
                 printf("Pedidos\n");
                 system("pause");
-                //devoluciones();
+                //pedidos
                 break;
             case 7:
                 printf("Transportista\n");
                 system("pause");
-                //devoluciones();
+                //Transportistas
                 break;
             case 8:
                 printf("Descuentos\n");
                 system("pause");
-                //devoluciones();
+                //descuentos();
                 break;
             case 9:
                 printf("Devoluciones\n");
