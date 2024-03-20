@@ -107,9 +107,31 @@ void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportis
         fflush(stdin);
         switch(opcion){
             case 1:
-                printf("Perfil\n");
-                system("pause");
-                //perfil();
+                system("cls");
+                do{
+                    printf("1. Ver perfil\n");
+                    printf("2. Modificar perfil\n");
+                    printf("3. Salir\n");
+                    printf("Seleccione una opcion: ");
+                    scanf("%d", &opcion);
+                    fflush(stdin);
+                    switch(opcion){
+                        case 1:
+                            mostrarPerfilAdmin_Prov(admin_prov, 0); //esto esta por terminar una vez login hecho
+                            break;
+                        case 2:
+                            modificarPerfilAdmin_Prov(admin_prov, 0);
+                            break;
+                        case 3:
+                            system("cls");
+                            break;
+                        default:
+                            system("cls");
+                            printf("Opcion no valida\n\n");
+                            system("pause");
+                            break;
+                    }
+                }while(opcion != 3);
                 break;
             case 2:
                 printf("Clientes\n");
@@ -168,7 +190,7 @@ void menuProveedor(clientes *clientes, int *numclientes, transportistas *transpo
     int opcion;
     do{
         system("cls");
-        printf("Empresa: %s\n\n", admin_prov[0].nombre);
+        printf("Empresa: %s\n\n", admin_prov[1].nombre);
         printf("1. Perfil\n");
         printf("2. Productos\n");
         printf("3. Pedidos\n");
@@ -178,9 +200,31 @@ void menuProveedor(clientes *clientes, int *numclientes, transportistas *transpo
         fflush(stdin);
         switch(opcion){
             case 1:
-                printf("Perfil\n");
-                system("pause");
-                //perfil();
+                system("cls");
+                do{
+                    printf("1. Ver perfil\n");
+                    printf("2. Modificar perfil\n");
+                    printf("3. Salir\n");
+                    printf("Seleccione una opcion: ");
+                    scanf("%d", &opcion);
+                    fflush(stdin);
+                    switch(opcion){
+                        case 1:
+                            mostrarPerfilAdmin_Prov(admin_prov, 1); //esto esta por terminar una vez login hecho
+                            break;
+                        case 2:
+                            modificarPerfilAdmin_Prov(admin_prov, 1);
+                            break;
+                        case 3:
+                            system("cls");
+                            break;
+                        default:
+                            system("cls");
+                            printf("Opcion no valida\n\n");
+                            system("pause");
+                            break;
+                    }
+                }while(opcion != 3);
                 break;
             case 2:
                 printf("Productos\n");

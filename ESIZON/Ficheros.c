@@ -163,7 +163,7 @@ void cargarproductos(productos *productos, int *numproductos)
     char linea[300];
     while (fgets(linea, 200, fichero))
     {    //formato a leer
-        sscanf(linea, "%[^-]-%[^-]-%[^-]-%[^-]-%i-%i-%i", productos[*numproductos].id_prod, productos[*numproductos].descrip, productos[*numproductos].id_categ, productos[*numproductos].id_gestor, &productos[*numproductos].stock, &productos[*numproductos].entrega, &productos[*numproductos].importe);
+        sscanf(linea, "%[^-]-%[^-]-%[^-]-%[^-]-%[^-]-%i-%i-%i", productos[*numproductos].id_prod,productos[*numproductos].nombre, productos[*numproductos].descrip, productos[*numproductos].id_categ, productos[*numproductos].id_gestor, &productos[*numproductos].stock, &productos[*numproductos].entrega, &productos[*numproductos].importe);
         (*numproductos)++;
         //imprimir el contenido de la línea, esto es solo para pruebas
         printf("%s", linea);
@@ -183,7 +183,7 @@ void guardarproductos(productos *productos, int numproductos){
     }
     for (int i = 0; i < numproductos; i++)
     {
-        fprintf(fichero, "%s-%s-%s-%s-%i-%i-%i\n", productos[i].id_prod, productos[i].descrip, productos[i].id_categ, productos[i].id_gestor, productos[i].stock, productos[i].entrega, productos[i].importe);
+        fprintf(fichero, "%s-%s-%s-%s-%s-%i-%i-%i\n", productos[i].id_prod,productos[i].nombre ,productos[i].descrip, productos[i].id_categ, productos[i].id_gestor, productos[i].stock, productos[i].entrega, productos[i].importe);
     }
     fclose(fichero);
 }

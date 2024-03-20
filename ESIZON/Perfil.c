@@ -17,6 +17,7 @@
     int cartera;
 } clientes;
 */
+
 void mostrarPerfilCliente(clientes * cliente, int id)
 {
     system("cls");
@@ -94,5 +95,62 @@ void modificarPerfilCliente(clientes * cliente, int id)
             break;
         }
     } while (opcion != 8);
+    system("cls");
+}
+/*
+typedef struct{
+    char id_empresa[5];
+    char nombre[21];
+    char email[31];
+    char password[16];
+    char perfil_usuario[14];
+} admin_prov;
+*/
+void mostrarPerfilAdmin_Prov(admin_prov * admin, int id)
+{
+    system("cls");
+    printf("Sus datos son: \n\n\n");
+    printf("ID: %s\n", admin[id].id_empresa);
+    printf("Nombre: %s\n", admin[id].nombre);
+    printf("Email: %s\n", admin[id].email);
+    printf("Password: %s\n", admin[id].password);
+    printf("Perfil de usuario: %s\n\n\n", admin[id].perfil_usuario);
+
+    system("pause");
+    system("cls");
+}
+
+void modificarPerfilAdmin_Prov(admin_prov * admin, int id)
+{   int opcion;
+    do
+    {
+        system("cls");
+        printf("Que dato desea modificar?\n");
+        printf("1. Email\n");
+        printf("2. Password\n");
+        printf("3. Salir\n\n");
+        printf("Introduzca la opcion: ");
+        scanf("%d", &opcion);
+        fflush(stdin);
+        system("cls");
+        switch (opcion)
+        {
+        case 1:
+            printf("Introduzca el nuevo email(30 caracteres maximo): ");
+            gets(admin[id].email);
+            break;
+        case 2:
+            printf("Introduzca la nueva password(15 caracteres maximo): ");
+            gets(admin[id].password);
+            break;
+        case 3:
+            break;
+        default:
+            system("cls");
+            printf("Opcion no valida\n");
+            system("pause");
+            break;
+        }
+    } while (opcion != 3);
     system("cls");
 }

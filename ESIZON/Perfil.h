@@ -5,10 +5,10 @@
 #include "Structs.h"
 
 void mostrarPerfilCliente(clientes *cliente, int id);
-//void mostrarPerfilAdmin_Prov(admin_prov *admin, int id);
+void mostrarPerfilAdmin_Prov(admin_prov *admin, int id);
 //void mostrarPerfilTransportista(transportistas *transportista, int id);
 void modificarPerfilCliente(clientes *cliente, int id);
-//void modificarPerfilAdmin(admin_prov *admin, int id);
+void modificarPerfilAdmin_Prov(admin_prov *admin, int id);
 //void modificarPerfilTransportista(transportistas *transportista, int id);
 
 #endif // PERFIL_H
