@@ -104,7 +104,7 @@ void cargarproductos_pedidos(productos_pedidos *productos_pedidos, int *numprodu
         }
         else if (strstr(linea, "enReparto") || strstr(linea, "enLocker"))
         {
-            sscanf(linea, "%[^-]-%[^-]-%i-%[^-]-%i-%[^-]-%[^-]-%[^-]-%i-%[^-]", productos_pedidos[*numproductos_pedido].id_pedido, productos_pedidos[*numproductos_pedido].id_prod, &productos_pedidos[*numproductos_pedido].num_unid, productos_pedidos[*numproductos_pedido].fecha_entrega, &productos_pedidos[*numproductos_pedido].importe, productos_pedidos[*numproductos_pedido].estado, productos_pedidos[*numproductos_pedido].id_transp, productos_pedidos[*numproductos_pedido].id_locker, &productos_pedidos[*numproductos_pedido].cod_locker, productos_pedidos[*numproductos_pedido].fecha_entrega_devolucion);
+            sscanf(linea, "%[^-]-%[^-]-%i-%[^-]-%i-%[^-]-%[^-]-%[^-]-%[^-]-%[^-]", productos_pedidos[*numproductos_pedido].id_pedido, productos_pedidos[*numproductos_pedido].id_prod, &productos_pedidos[*numproductos_pedido].num_unid, productos_pedidos[*numproductos_pedido].fecha_entrega, &productos_pedidos[*numproductos_pedido].importe, productos_pedidos[*numproductos_pedido].estado, productos_pedidos[*numproductos_pedido].id_transp, productos_pedidos[*numproductos_pedido].id_locker, &productos_pedidos[*numproductos_pedido].cod_locker, productos_pedidos[*numproductos_pedido].fecha_entrega_devolucion);
         }
         else if (strstr(linea, "entregado") || strstr(linea, "devuelto"))
         {
@@ -137,7 +137,7 @@ void guardarproductos_pedidos(productos_pedidos *productos_pedidos, int numprodu
         }
         else if (strstr(productos_pedidos[i].estado, "enReparto") || strstr(productos_pedidos[i].estado, "enLocker"))
         {
-            fprintf(fichero, "%s-%s-%i-%s-%i-%s-%s-%s-%i-%s", productos_pedidos[i].id_pedido, productos_pedidos[i].id_prod, productos_pedidos[i].num_unid, productos_pedidos[i].fecha_entrega, productos_pedidos[i].importe, productos_pedidos[i].estado, productos_pedidos[i].id_transp, productos_pedidos[i].id_locker, productos_pedidos[i].cod_locker, productos_pedidos[i].fecha_entrega_devolucion);
+            fprintf(fichero, "%s-%s-%i-%s-%i-%s-%s-%s-%s-%s", productos_pedidos[i].id_pedido, productos_pedidos[i].id_prod, productos_pedidos[i].num_unid, productos_pedidos[i].fecha_entrega, productos_pedidos[i].importe, productos_pedidos[i].estado, productos_pedidos[i].id_transp, productos_pedidos[i].id_locker, productos_pedidos[i].cod_locker, productos_pedidos[i].fecha_entrega_devolucion);
         }
         else if (strstr(productos_pedidos[i].estado, "entregado") || strstr(productos_pedidos[i].estado, "devuelto"))
         {
@@ -372,7 +372,7 @@ void cargarcompartimentoslockers(compartimentos_lockers *compartimentoslockers, 
     char linea[300];
     while (fgets(linea, 200, fichero))
     {    //formato a leer
-        sscanf(linea, "%[^-]-%i-%[^-]-%[^-]-%[^-]-%[^-]", compartimentoslockers[*numcompartimentoslockers].id_locker, &compartimentoslockers[*numcompartimentoslockers].num_comp, &compartimentoslockers[*numcompartimentoslockers].cod_locker, compartimentoslockers[*numcompartimentoslockers].estado, compartimentoslockers[*numcompartimentoslockers].fecha_ocupacion, compartimentoslockers[*numcompartimentoslockers].fecha_caducidad);
+        sscanf(linea, "%[^-]-%i-%[^-]-%[^-]-%[^-]-%[^-]", compartimentoslockers[*numcompartimentoslockers].id_locker, &compartimentoslockers[*numcompartimentoslockers].num_comp, compartimentoslockers[*numcompartimentoslockers].cod_locker, compartimentoslockers[*numcompartimentoslockers].estado, compartimentoslockers[*numcompartimentoslockers].fecha_ocupacion, compartimentoslockers[*numcompartimentoslockers].fecha_caducidad);
         (*numcompartimentoslockers)++;
         //imprimir el contenido de la línea, esto es solo para pruebas
         printf("%s", linea);
@@ -517,7 +517,7 @@ void cargardevoluciones(devoluciones *devoluciones, int *numdevoluciones)
     {    //formato a leer
         if (strstr(linea, "aceptado"))
         {
-            sscanf(linea, "%[^-]-%[^-]-%[^-]-%[^-]-%[^-]-%[^-]", devoluciones[*numdevoluciones].id_pedido, devoluciones[*numdevoluciones].id_prod, devoluciones[*numdevoluciones].fecha_devolucion, devoluciones[*numdevoluciones].motivo, devoluciones[*numdevoluciones].estado, devoluciones[*numdevoluciones].fecha_aceptacion, devoluciones[*numdevoluciones].fecha_caducidad);
+            sscanf(linea,"%[^-]-%[^-]-%[^-]-%[^-]-%[^-]-%[^-]", devoluciones[*numdevoluciones].id_pedido, devoluciones[*numdevoluciones].id_prod, devoluciones[*numdevoluciones].fecha_devolucion, devoluciones[*numdevoluciones].motivo, devoluciones[*numdevoluciones].estado, devoluciones[*numdevoluciones].fecha_aceptacion, devoluciones[*numdevoluciones].fecha_caducidad);
         }
         else
         {

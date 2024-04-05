@@ -154,3 +154,69 @@ void modificarPerfilAdmin_Prov(admin_prov * admin, int id)
     } while (opcion != 3);
     system("cls");
 }
+
+void mostrarPerfilTransportista(transportistas * transportista, int id)
+{
+    system("cls");
+    printf("Sus datos son: \n\n\n");
+    printf("ID: %s\n", transportista[id].id_transp);
+    printf("Nombre: %s\n", transportista[id].nombre);
+    printf("Email: %s\n", transportista[id].email);
+    printf("Password: %s\n", transportista[id].password);
+    printf("Empresa: %s\n", transportista[id].empresa);
+    printf("Ciudad: %s\n", transportista[id].ciudad);   
+
+    system("pause");
+    system("cls");
+
+}
+
+void modificarPerfilTransportista(transportistas * transportista, int id)
+{   int opcion;
+    do
+    {
+        system("cls");
+        printf("Que dato desea modificar?\n");
+        printf("1. Email\n");
+        printf("2. Password\n");
+        printf("3. Nombre\n");
+        printf("4. Nombre de la empresa\n");
+        printf("5. Ciudad\n");
+        printf("6. Salir\n\n");
+        printf("Introduzca la opcion: ");
+        scanf("%d", &opcion);
+        fflush(stdin);
+        system("cls");
+        switch (opcion)
+        {
+        case 1:
+            printf("Introduzca el nuevo email(30 caracteres maximo): ");
+            gets(transportista[id].email);
+            break;
+        case 2:
+            printf("Introduzca la nueva password(15 caracteres maximo): ");
+            gets(transportista[id].password);
+            break;
+        case 3:
+            printf("Introduzca el nuevo nombre(20 caracteres maximo): ");
+            gets(transportista[id].nombre);
+            break;
+        case 4:
+            printf("Introduzca el nuevo nombre de la empresa(20 caracteres maximo): ");
+            gets(transportista[id].empresa);
+            break;
+        case 5:
+            printf("Introduzca la nueva ciudad(20 caracteres maximo): ");
+            gets(transportista[id].ciudad);
+            break;
+        case 6:
+            break;
+        default:
+            system("cls");
+            printf("Opcion no valida\n");
+            system("pause");
+            break;
+        }
+    } while (opcion != 6);
+    system("cls");
+}
