@@ -9,7 +9,7 @@
 #include <windows.h>
 #include "Menus.c"
 #include "Menus.h"
-
+#define MAX 100
 
  int main()
  {
@@ -17,26 +17,26 @@
     SetConsoleOutputCP(1252);  //para que se muestren bien los caracteres especiales en la consola
     SetConsoleCP(1252); //para que se muestren bien los caracteres especiales en la consola
 
-    clientes clientes[100];
+    clientes clientes[MAX];
     int numclientes = 0;
 
-    transportistas transportistas[100];
+    transportistas transportistas[MAX];
     int numtransportistas = 0;
 
-    productos productos[100];
+    productos productos[MAX];
     int numproductos = 0;
 
 
-    categorias categorias[100];
+    categorias categorias[MAX];
     int numcategorias = 0;
 
-    descuentos descuentos[100];
+    descuentos descuentos[MAX];
     int numdescuentos = 0;
 
-    productos_pedidos productos_pedidos[100];
+    productos_pedidos productos_pedidos[MAX];
     int numproductos_pedido = 0;
 
-    descuentos_clientes descuentosclientes[100];
+    descuentos_clientes descuentosclientes[MAX];
     int numdescuentosclientes = 0;
 
     lockers lockers[100];

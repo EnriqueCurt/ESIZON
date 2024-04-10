@@ -55,7 +55,7 @@ void menuCliente(clientes *clientes, int *numclientes, transportistas *transport
                 }while(opcion != 3);
                 break;
             case 2:
-                mostrarProductos(productos, *numproductos);
+                Cliente_mostrarProductos(productos, *numproductos);
                 break;
             case 3:
                 printf("Descuentos\n");
@@ -144,9 +144,7 @@ void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportis
                 //descuentos();
                 break;
             case 4:
-                printf("Productos\n");
-                system("pause");
-                //pedidos();
+                Admin_GestionarProductos(productos, numproductos);
                 break;
             case 5:
                 printf("Categorías\n");

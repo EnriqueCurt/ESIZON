@@ -10,7 +10,7 @@ void cargarclientes(clientes *clientes, int *numclientes)
 {
     
     FILE *fichero; 
-    fichero = fopen("clientes.txt", "r");
+    fichero = fopen("Datos/clientes.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de clientes\n");
@@ -29,7 +29,7 @@ void cargarclientes(clientes *clientes, int *numclientes)
 
 void guardarclientes(clientes *clientes, int numclientes){
     FILE *fichero;
-    fichero = fopen("clientes.txt", "w");
+    fichero = fopen("Datos/clientes.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de clientes\n");
@@ -47,7 +47,7 @@ void cargartransportistas(transportistas *transportistas, int *numtransportistas
 {
     
     FILE *fichero; 
-    fichero = fopen("transportistas.txt", "r");
+    fichero = fopen("Datos/transportistas.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de transportistas\n");
@@ -68,7 +68,7 @@ void cargartransportistas(transportistas *transportistas, int *numtransportistas
 // el formato de linea es: 0001-Rafael Gutierrez-rafael@gutitrans.com-rf001-GutiTrans-Cadiz
 void guardartransportistas(transportistas *transportistas, int numtransportistas){
     FILE *fichero;
-    fichero = fopen("transportistas.txt", "w");
+    fichero = fopen("Datos/transportistas.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de transportistas\n");
@@ -89,7 +89,7 @@ void cargarproductos_pedidos(productos_pedidos *productos_pedidos, int *numprodu
 {
     
     FILE *fichero; 
-    fichero = fopen("productosPedidos.txt", "r");
+    fichero = fopen("Datos/productosPedidos.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de productos_pedidos\n");
@@ -123,7 +123,7 @@ void cargarproductos_pedidos(productos_pedidos *productos_pedidos, int *numprodu
 //en el caso que el estado sea entregado o devuelto el formato de linea es: 0000001-000002-1-03/02/2024-45-entregado-0001
 void guardarproductos_pedidos(productos_pedidos *productos_pedidos, int numproductos_pedido){
     FILE *fichero;
-    fichero = fopen("ProductosPedidos.txt", "w");
+    fichero = fopen("Datos/ProductosPedidos.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de productos_pedidos\n");
@@ -154,7 +154,7 @@ void cargarproductos(productos *productos, int *numproductos)
 {
     
     FILE *fichero; 
-    fichero = fopen("Productos.txt", "r");
+    fichero = fopen("Datos/Productos.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de productos\n");
@@ -175,7 +175,7 @@ void cargarproductos(productos *productos, int *numproductos)
 //el formato de linea es : 0000001-televisor 32” 3D-0001-0001-50-5-340
 void guardarproductos(productos *productos, int numproductos){
     FILE *fichero;
-    fichero = fopen("Productos.txt", "w");
+    fichero = fopen("Datos/Productos.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de productos\n");
@@ -195,7 +195,7 @@ void cargarcategorias(categorias *categorias, int *numcategorias)
 {
     
     FILE *fichero; 
-    fichero = fopen("Categorias.txt", "r");
+    fichero = fopen("Datos/Categorias.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de categorias\n");
@@ -217,7 +217,7 @@ void cargarcategorias(categorias *categorias, int *numcategorias)
 
 void guardarcategorias(categorias *categorias, int numcategorias){
     FILE *fichero;
-    fichero = fopen("Categorias.txt", "w");
+    fichero = fopen("Datos/Categorias.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de categorias\n");
@@ -237,7 +237,7 @@ void cargardescuentos(descuentos *descuentos, int *numdescuentos)
 {
     
     FILE *fichero; 
-    fichero = fopen("Descuentos.txt", "r");
+    fichero = fopen("Datos/Descuentos.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de descuentos\n");
@@ -259,7 +259,7 @@ void cargardescuentos(descuentos *descuentos, int *numdescuentos)
 
 void guardardescuentos(descuentos *descuentos, int numdescuentos){
     FILE *fichero;
-    fichero = fopen("Descuentos.txt", "w");
+    fichero = fopen("Datos/Descuentos.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de descuentos\n");
@@ -279,7 +279,7 @@ void cargardescuentosclientes(descuentos_clientes *descuentosclientes, int *numd
 {
     
     FILE *fichero; 
-    fichero = fopen("DescuentosClientes.txt", "r");
+    fichero = fopen("Datos/DescuentosClientes.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de descuentosclientes\n");
@@ -301,7 +301,7 @@ void cargardescuentosclientes(descuentos_clientes *descuentosclientes, int *numd
 
 void guardardescuentosclientes(descuentos_clientes *descuentosclientes, int numdescuentosclientes){
     FILE *fichero;
-    fichero = fopen("DescuentosClientes.txt", "w");
+    fichero = fopen("Datos/DescuentosClientes.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de descuentosclientes\n");
@@ -321,7 +321,7 @@ void cargarlockers(lockers *lockers, int *numlockers)
 {
     
     FILE *fichero; 
-    fichero = fopen("Lockers.txt", "r");
+    fichero = fopen("Datos/Lockers.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de lockers\n");
@@ -343,7 +343,7 @@ void cargarlockers(lockers *lockers, int *numlockers)
 
 void guardarlockers(lockers *lockers, int numlockers){
     FILE *fichero;
-    fichero = fopen("Lockers.txt", "w");
+    fichero = fopen("Datos/Lockers.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de lockers\n");
@@ -363,7 +363,7 @@ void cargarcompartimentoslockers(compartimentos_lockers *compartimentoslockers, 
 {
     
     FILE *fichero; 
-    fichero = fopen("CompartimentosLockers.txt", "r");
+    fichero = fopen("Datos/CompartimentosLockers.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de compartimentoslockers\n");
@@ -385,7 +385,7 @@ void cargarcompartimentoslockers(compartimentos_lockers *compartimentoslockers, 
 
 void guardarcompartimentoslockers(compartimentos_lockers *compartimentoslockers, int numcompartimentoslockers){
     FILE *fichero;
-    fichero = fopen("CompartimentosLockers.txt", "w");
+    fichero = fopen("Datos/CompartimentosLockers.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de compartimentoslockers\n");
@@ -405,7 +405,7 @@ void cargaradmin_prov(admin_prov *admin_prov, int *numadmin_prov)
 {
     
     FILE *fichero; 
-    fichero = fopen("AdminProv.txt", "r");
+    fichero = fopen("Datos/AdminProv.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de admin_prov\n");
@@ -427,7 +427,7 @@ void cargaradmin_prov(admin_prov *admin_prov, int *numadmin_prov)
 
 void guardaradmin_prov(admin_prov *admin_prov, int numadmin_prov){
     FILE *fichero;
-    fichero = fopen("AdminProv.txt", "w");
+    fichero = fopen("Datos/AdminProv.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de admin_prov\n");
@@ -448,7 +448,7 @@ void cargarpedidos(pedidos *pedidos, int *numpedidos)
 {
     
     FILE *fichero; 
-    fichero = fopen("Pedidos.txt", "r");
+    fichero = fopen("Datos/Pedidos.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de pedidos\n");
@@ -478,7 +478,7 @@ void cargarpedidos(pedidos *pedidos, int *numpedidos)
 
 void guardarpedidos(pedidos *pedidos, int numpedidos){
     FILE *fichero;
-    fichero = fopen("Pedidos.txt", "w");
+    fichero = fopen("Datos/Pedidos.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de pedidos\n");
@@ -506,7 +506,7 @@ void cargardevoluciones(devoluciones *devoluciones, int *numdevoluciones)
 {
     
     FILE *fichero; 
-    fichero = fopen("Devoluciones.txt", "r");
+    fichero = fopen("Datos/Devoluciones.txt", "r");
     if (!fichero)
     {
         printf("Error al abrir el fichero de devoluciones\n");
@@ -536,7 +536,7 @@ void cargardevoluciones(devoluciones *devoluciones, int *numdevoluciones)
 
 void guardardevoluciones(devoluciones *devoluciones, int numdevoluciones){
     FILE *fichero;
-    fichero = fopen("Devoluciones.txt", "w");
+    fichero = fopen("Datos/Devoluciones.txt", "w");
     if (!fichero)
     {
         printf("Error al abrir el fichero de devoluciones\n");
