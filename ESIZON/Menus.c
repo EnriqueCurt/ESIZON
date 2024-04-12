@@ -10,13 +10,16 @@
 #include "Perfil.c"
 #include "Productos.h"
 #include "Productos.c"
+#include "iniciosesion.h"
+#include "iniciosesion.c"
 
-void menuCliente(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones)
+
+void menuCliente(int *id,clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones)
 {
     int opcion;
     do{
         system("cls");
-        printf("Usuario: %s\n\n", clientes[0].nombre);
+        printf("Usuario: %s\n\n", clientes[*id].nombre);
         printf("1. Perfil\n");
         printf("2. Productos\n");
         printf("3. Descuentos\n");
@@ -38,10 +41,10 @@ void menuCliente(clientes *clientes, int *numclientes, transportistas *transport
                     fflush(stdin);
                     switch(opcion){
                         case 1:
-                            mostrarPerfilCliente(clientes, 0);
+                            mostrarPerfilCliente(clientes, *id);
                             break;
                         case 2:
-                            modificarPerfilCliente(clientes, 0);
+                            modificarPerfilCliente(clientes, *id);
                             break;
                         case 3:
                             system("cls");
@@ -73,7 +76,7 @@ void menuCliente(clientes *clientes, int *numclientes, transportistas *transport
                 //devoluciones(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
                 break;
             case 6:
-                return;
+                system("cls");
                 break;
             default:
                 system("cls");
@@ -84,7 +87,7 @@ void menuCliente(clientes *clientes, int *numclientes, transportistas *transport
     }while( opcion != 6);
 }
 
-void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones){
+void menuAdmin(int *id,clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones){
     int opcion;
      //Para que se puedan imprimir caracteres especiales
     setlocale(LC_ALL, "spanish");
@@ -117,10 +120,10 @@ void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportis
                     fflush(stdin);
                     switch(opcion){
                         case 1:
-                            mostrarPerfilAdmin_Prov(admin_prov, 0); //esto esta por terminar una vez login hecho
+                            mostrarPerfilAdmin_Prov(admin_prov, *id); //esto esta por terminar una vez login hecho
                             break;
                         case 2:
-                            modificarPerfilAdmin_Prov(admin_prov, 0);
+                            modificarPerfilAdmin_Prov(admin_prov, *id);
                             break;
                         case 3:
                             system("cls");
@@ -173,7 +176,6 @@ void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportis
                 break;
             case 10:
                 system("cls");
-                return;
                 break;
             default:
                 system("cls");
@@ -184,11 +186,11 @@ void menuAdmin(clientes *clientes, int *numclientes, transportistas *transportis
     }while( opcion != 10);
 }
 
-void menuProveedor(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones){
+void menuProveedor(int *id,clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones){
     int opcion;
     do{
         system("cls");
-        printf("Empresa: %s\n\n", admin_prov[1].nombre);
+        printf("Empresa: %s\n\n", admin_prov[*id].nombre);
         printf("1. Perfil\n");
         printf("2. Productos\n");
         printf("3. Pedidos\n");
@@ -208,10 +210,10 @@ void menuProveedor(clientes *clientes, int *numclientes, transportistas *transpo
                     fflush(stdin);
                     switch(opcion){
                         case 1:
-                            mostrarPerfilAdmin_Prov(admin_prov, 1); //esto esta por terminar una vez login hecho
+                            mostrarPerfilAdmin_Prov(admin_prov, *id); //esto esta por terminar una vez login hecho
                             break;
                         case 2:
-                            modificarPerfilAdmin_Prov(admin_prov, 1);
+                            modificarPerfilAdmin_Prov(admin_prov, *id);
                             break;
                         case 3:
                             system("cls");
@@ -236,7 +238,6 @@ void menuProveedor(clientes *clientes, int *numclientes, transportistas *transpo
                 break;
             case 4:
                 system("cls");
-                return;
                 break;
             default:
                 system("cls");
@@ -248,11 +249,11 @@ void menuProveedor(clientes *clientes, int *numclientes, transportistas *transpo
 
 }
 
-void menuTransportista(clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones){
+void menuTransportista(int *id,clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones){
     int opcion;
     do{
         system("cls");
-        printf("Transportista: %s\n\n", transportistas[0].nombre);
+        printf("Transportista: %s\n\n", transportistas[*id].nombre);
         printf("1. Perfil\n");
         printf("2. Repartos\n");
         printf("3. Retornos\n");
@@ -273,10 +274,10 @@ void menuTransportista(clientes *clientes, int *numclientes, transportistas *tra
                     fflush(stdin);
                     switch(opcion){
                         case 1:
-                            mostrarPerfilTransportista(transportistas,0); //esto esta por terminar una vez login hecho
+                            mostrarPerfilTransportista(transportistas,*id); //esto esta por terminar una vez login hecho
                             break;
                         case 2:
-                            modificarPerfilTransportista(transportistas,0);
+                            modificarPerfilTransportista(transportistas,*id);
                             break;
                         case 3:
                             system("cls");
@@ -289,7 +290,7 @@ void menuTransportista(clientes *clientes, int *numclientes, transportistas *tra
                     }
                 }while(opcion != 3);
                 break;
-                break;
+
             case 2:
                 printf("Pedidos\n");
                 system("pause");
@@ -302,7 +303,6 @@ void menuTransportista(clientes *clientes, int *numclientes, transportistas *tra
                 break;
             case 4:
                 system("cls");
-                return;
                 break;
             default:
                 system("cls");
@@ -310,7 +310,7 @@ void menuTransportista(clientes *clientes, int *numclientes, transportistas *tra
                 system("pause");
                 break;
         }
-    }while( opcion != 3);
+    }while( opcion != 4);
 
 }
 
@@ -327,28 +327,78 @@ void menuInicial(clientes *clientes, int *numclientes, transportistas *transport
     printf("2. Registrarse\n");
     printf("3. Salir\n");
     printf("Seleccione una opcion: ");
+
+    int id;
     
         scanf("%d", &opcion);
         fflush(stdin);
         switch(opcion){
             case 1:
+                system("cls");
                 printf("Iniciar sesion\n");
                 system("pause");
-                //iniciarSesion(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
-                menuCliente(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
-                menuAdmin(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
-                menuProveedor(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
-                menuTransportista(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                system("cls");
+                int tipo_usuario = 0;
+                tipo_usuario=iniciosesion(clientes,*numclientes,&id, admin_prov,*numadmin_prov, transportistas,*numtransportistas);
+                if(tipo_usuario==1)
+                {
+                    menuCliente(&id,clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                }
+                else if(tipo_usuario==2)
+                {
+                    menuAdmin(&id,clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                }
+                else if(tipo_usuario==3)
+                {
+                    menuProveedor(&id,clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                }
+                else if(tipo_usuario==4)
+                {
+                menuTransportista(&id,clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                }
+                else
+                {
+                    printf("Usuario no encontrado\n");
+                }
                 break;
             case 2:
-                printf("Registrarse\n");
-                system("pause");
-                //registrarse(clientes, &numclientes, transportistas, &numtransportistas, productos_pedidos, &numproductos_pedido, productos, &numproductos, categorias, &numcategorias, descuentos, &numdescuentos, descuentosclientes, &numdescuentosclientes, lockers, &numlockers, compartimentoslockers, &numcompartimentoslockers, admin_prov, &numadmin_prov, pedidos, &numpedidos, devoluciones, &numdevoluciones);
+                do{ 
+                    system("cls");
+                    printf("1. Registrarse como cliente\n");
+                    printf("2. Registrarse como proveedor\n");
+                    printf("3. Registrarse como transportista\n");
+                    printf("4. Salir\n\n\n");
+                    printf("Seleccione una opcion: ");
+                    fflush(stdin);
+                    scanf("%d", &opcion);
+                    fflush(stdin);
+                    switch(opcion){
+                        case 1:
+                            registrarPerfilCliente(clientes, numclientes);
+                            break;
+                        case 2:
+                            registrarPerfilProv(admin_prov, numadmin_prov);
+                            break;
+                        case 3:
+                            registrarPerfilTransport(transportistas, numtransportistas);
+                            break;
+                        case 4:
+                            system("cls");
+                            break;
+                        default:
+                            system("cls");
+                            printf("Opcion no valida\n\n");
+                            system("pause");
+                            break;
+                    }
+                }while(opcion != 4);
                 break;
+
             case 3:
             system("cls");
                 return;
                 break;
+
             default:
                 system("cls");
                 printf("Opcion no valida\n\n");

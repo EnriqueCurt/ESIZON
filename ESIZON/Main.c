@@ -63,6 +63,13 @@
     printf("\nEl numero de admin_prov es: %d\n", numadmin_prov); //esto es solo para pruebas
     printf("\nEl numero de pedidos es: %d\n", numpedidos); //esto es solo para pruebas
     printf("\nEl numero de devoluciones es: %d\n", numdevoluciones); //esto es solo para pruebas
+    printf("\nEl numero de productos es: %d\n", numproductos); //esto es solo para pruebas
+    printf("\nEl numero de categorias es: %d\n", numcategorias); //esto es solo para pruebas
+    printf("\nEl numero de descuentos es: %d\n", numdescuentos); //esto es solo para pruebas
+    printf("\nEl numero de productos_pedidos es: %d\n", numproductos_pedido); //esto es solo para pruebas
+    printf("\nEl numero de clientes es: %d\n", numclientes); //esto es solo para pruebas
+    printf("\nEl numero de transportistas es: %d\n", numtransportistas); //esto es solo para pruebas
+    
     system("pause");
     system("cls");
     
