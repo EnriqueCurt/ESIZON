@@ -87,6 +87,7 @@ void modificarPerfilCliente(clientes * cliente, int id)
             fflush(stdin);
             break;
         case 8:
+            system("cls");
             break;
         default:
             system("cls");
@@ -95,7 +96,6 @@ void modificarPerfilCliente(clientes * cliente, int id)
             break;
         }
     } while (opcion != 8);
-    system("cls");
 }
 /*
 typedef struct{

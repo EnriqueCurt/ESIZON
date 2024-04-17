@@ -224,15 +224,18 @@ void Proveedor_GestionarProductos(productos *producto, int *numproductos, admin_
         switch (opcion)
         {
         case 1:
-            printf("Introduzca el ID del producto: ");
-            gets(producto[*numproductos].id_prod);
+            char cadena[8];
+            sprintf(cadena, "%07d", (*numproductos)+1);
+            strcpy(producto[*numproductos].id_prod,cadena);
             printf("Introduzca el nombre del producto: ");
             gets(producto[*numproductos].nombre);
             printf("Introduzca la descripcion del producto: ");
             gets(producto[*numproductos].descrip);
             printf("Introduzca el ID de la categoria del producto: ");
             gets(producto[*numproductos].id_categ);
+
             strcpy(producto[*numproductos].id_gestor, admin[id].id_empresa);
+
             printf("Introduzca el stock del producto: ");
             scanf("%d", &producto[*numproductos].stock);
             fflush(stdin);
@@ -252,8 +255,6 @@ void Proveedor_GestionarProductos(productos *producto, int *numproductos, admin_
             {
                 if (strcmp(producto[i].id_prod, id_prod) == 0 && strcmp(producto[i].id_gestor, admin[id].id_empresa) == 0)
                 {
-                    printf("Introduzca el nuevo ID del producto: ");
-                    gets(producto[i].id_prod);
                     printf("Introduzca el nuevo nombre del producto: ");
                     gets(producto[i].nombre);
                     printf("Introducta la nueva descripcion del producto: ");   

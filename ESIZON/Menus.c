@@ -12,6 +12,11 @@
 #include "Productos.c"
 #include "iniciosesion.h"
 #include "iniciosesion.c"
+#include "GestionarAdministrador.h"
+#include "GestionarAdministrador.c"
+#include "Descuentos.c"
+#include "Descuentos.h"
+
 
 
 void menuCliente(int *id,clientes *clientes, int *numclientes, transportistas *transportistas, int *numtransportistas, productos_pedidos *productos_pedidos, int *numproductos_pedido, productos *productos, int *numproductos, categorias *categorias, int *numcategorias, descuentos *descuentos, int *numdescuentos, descuentos_clientes *descuentosclientes, int *numdescuentosclientes, lockers *lockers, int *numlockers, compartimentos_lockers *compartimentoslockers, int *numcompartimentoslockers, admin_prov *admin_prov, int *numadmin_prov, pedidos *pedidos, int *numpedidos, devoluciones *devoluciones, int *numdevoluciones)
@@ -61,9 +66,7 @@ void menuCliente(int *id,clientes *clientes, int *numclientes, transportistas *t
                 Cliente_mostrarProductos(productos, *numproductos);
                 break;
             case 3:
-                printf("Descuentos\n");
-                system("pause");
-                //descuentos(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                listarDescuentosCliente(descuentosclientes, *numdescuentosclientes, *id);
                 break;
             case 4:
                 printf("Pedidos\n");
@@ -137,32 +140,23 @@ void menuAdmin(int *id,clientes *clientes, int *numclientes, transportistas *tra
                 }while(opcion != 3);
                 break;
             case 2:
-                printf("Clientes\n");
-                system("pause");
-                //productos();
+                GestionarClientes(clientes, numclientes);
                 break;
             case 3:
-                printf("Proveedores\n");
-                system("pause");
-                //descuentos();
+                GestionarProveedores(admin_prov, numadmin_prov);
                 break;
             case 4:
                 Admin_GestionarProductos(productos, numproductos);
                 break;
             case 5:
-                printf("Categorías\n");
-                system("pause");
-                //devoluciones();
+                GestionarCategoria(categorias, numcategorias);
                 break;
             case 6:
                 printf("Pedidos\n");
                 system("pause");
-                //pedidos
                 break;
             case 7:
-                printf("Transportista\n");
-                system("pause");
-                //Transportistas
+                GestionarTransportistas(transportistas, numtransportistas);
                 break;
             case 8:
                 printf("Descuentos\n");
@@ -227,9 +221,7 @@ void menuProveedor(int *id,clientes *clientes, int *numclientes, transportistas 
                 }while(opcion != 3);
                 break;
             case 2:
-                printf("Productos\n");
-                system("pause");
-                //productos();
+                Proveedor_GestionarProductos(productos, numproductos,admin_prov,*id);
                 break;
             case 3:
                 printf("Pedidos\n");

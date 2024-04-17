@@ -5,7 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+//prototipo: void cargarclientes(clientes *clientes, int *numclientes);
+//precondiciones: clientes es un array de estructuras de tipo clientes y numclientes es un puntero a entero
+//postcondiciones: se cargan los datos de los clientes en el array de estructuras clientes y se devuelve el numero de clientes
 void cargarclientes(clientes *clientes, int *numclientes)
 {
     
@@ -26,7 +28,9 @@ void cargarclientes(clientes *clientes, int *numclientes)
     }
     fclose(fichero);
 }
-
+//prototipo: void guardarclientes(clientes *clientes, int numclientes);
+//precondiciones: clientes es un array de estructuras de tipo clientes y numclientes es un entero
+//postcondiciones: se guardan los datos de los clientes en el fichero clientes.txt
 void guardarclientes(clientes *clientes, int numclientes){
     FILE *fichero;
     fichero = fopen("Datos/clientes.txt", "w");

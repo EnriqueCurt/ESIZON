@@ -8,14 +8,14 @@
 #include "Pedidos.h"
 
 //Necesito crear tres funciones void:ClientesPedidos,AdminPedidios y ProveedorPedidos
-//El Fichero Pedidos.txt, almacenará la información de los distintos pedidos realizados por los clientes
+/*El Fichero Pedidos.txt, almacenará la información de los distintos pedidos realizados por los clientes
   registrados en la plataforma, con los siguientes campos separados por guiones:
 o Identificador del pedido (Id_pedido), 7 dígitos.
 o Fecha del pedido (día, mes y año)
 o Identificador del cliente que realiza el pedido (Id_cliente), 7 dígitos.
 o Lugar de entrega (Lugar): «domicilio» o «locker»
 o Identificador de Locker (Id_locker), 10 caracteres máximo.
-o Identificador del código promocional o cheque regalo (Id_cod), 10 caracteres máximo.
+o Identificador del código promocional o cheque regalo (Id_cod), 10 caracteres máximo.*/
 
 //ClientesPedidos: Permite al cliente realizar,eliminar,consultar y modificar pedidos.Todas estan operaciones se realizaran en la misma funcio ClientesPedidos
 
