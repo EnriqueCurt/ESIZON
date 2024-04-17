@@ -4,22 +4,13 @@
 #include <locale.h>
 #include <windows.h>
 #include "Perfil.h"
-#include "Productos.h"
 #include "Pedidos.h"
 
-//Necesito crear tres funciones void:ClientesPedidos,AdminPedidios y ProveedorPedidos
-/*El Fichero Pedidos.txt, almacenará la información de los distintos pedidos realizados por los clientes
-  registrados en la plataforma, con los siguientes campos separados por guiones:
-o Identificador del pedido (Id_pedido), 7 dígitos.
-o Fecha del pedido (día, mes y año)
-o Identificador del cliente que realiza el pedido (Id_cliente), 7 dígitos.
-o Lugar de entrega (Lugar): «domicilio» o «locker»
-o Identificador de Locker (Id_locker), 10 caracteres máximo.
-o Identificador del código promocional o cheque regalo (Id_cod), 10 caracteres máximo.*/
+
 
 //ClientesPedidos: Permite al cliente realizar,eliminar,consultar y modificar pedidos.Todas estan operaciones se realizaran en la misma funcio ClientesPedidos
 
-void ClientesPedidos(){
+void ClientesPedidos(clientes * cliente, int id){
 	int opcion;
 	printf("1. Realizar Pedido\n");
 	printf("2. Eliminar Pedido\n");
@@ -69,22 +60,33 @@ void RealizarPedido(){
 	fclose(fichero);
 }
 
-void EliminarPedido(){
-	FILE *fichero,*fichero2;
-	char id_pedido[8],id_pedido2[8],fecha[11],id_cliente[8],lugar[10],id_locker[11],id_cod[11];
-	printf("Introduzca el identificador del pedido a eliminar: ");
-	scanf("%s",id_pedido);
-	fichero=fopen("Pedidos.txt","r");
-	fichero2=fopen("Pedidos2.txt","w");
-	while(fscanf(fichero,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod)!=EOF){
-		if(strcmp(id_pedido,id_pedido2)!=0){
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod);
-		}
-	}
-	fclose(fichero);
-	fclose(fichero2);
-	remove("Pedidos.txt");
-	rename("Pedidos2.txt","Pedidos.txt");
+void EliminarPedido(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+	 char cadena[8];
+    sprintf(cadena, "%07d", id);
+    int i;
+    int exit=0;
+    for (i = 0; i < *numpedidos && exit == 0; i++)
+    {
+        if (strcmp(pedido[i].id_pedido, cadena) == 0)
+        {
+            int j;
+            for (j = i; j < *numpedidos - 1; j++)
+            {
+                if(strcmp(pedido[i].id_pedido,productopedido[j].id_pedido)==0){
+					int k;
+					for(k=1;k<=*numproductos;k++){
+						if(strcmp(productopedido[j].id_prod,producto[k].id_prod)==0){
+							producto[k].stock=producto[k].stock+productopedido[j].num_unid;
+						}
+					}
+						
+					(*numpedidos)--;
+				}
+            }
+            (*numclientes)--;
+            printf("Pedido eliminado\n");
+            exit=1;
+        }
 }
 
 void ConsultarPedido(){
@@ -138,9 +140,9 @@ void ModificarPedido(){
 	rename("Pedidos2.txt","Pedidos.txt");
 }
 
-//AdminPedidos: Mediante el menú correspondiente podrá realizar altas, bajas, búsquedas, listados ymodificaciones de pedidos.Asi como asignar transportistas a los productos y asignar lockers a los pedidos.
+//AdminPedidos: Mediante el menú correspondiente podrá realizar altas, bajas, búsquedas, listados ymodificaciones de pedidos.Asi como asignar transportistas a los pedidos y asignar lockers a los pedidos.
 
-void AdminPedidos(){
+void AdminPedidos(admin_prov * admin, int id){
 	int opcion;
 	printf("1. Realizar Pedido\n");
 	printf("2. Eliminar Pedido\n");
@@ -244,7 +246,7 @@ void AsignarTransportista (){
 }
 
 
-void ProveedorPedidos(){
+void ProveedorPedidos(transportistas * transportista, int id){
 	int opcion;
 	printf("1. Consultar Pedido\n");
 	printf("2. Modificar Pedido\n");
@@ -273,4 +275,3 @@ void ProveedorPedidos(){
 			break;
 	}
 }
-
