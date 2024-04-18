@@ -7,9 +7,6 @@
 #include "Pedidos.h"
 
 
-
-//ClientesPedidos: Permite al cliente realizar,eliminar,consultar y modificar pedidos.Todas estan operaciones se realizaran en la misma funcio ClientesPedidos
-
 void ClientesPedidos(clientes * cliente, int id){
 	int opcion;
 	printf("1. Realizar Pedido\n");
@@ -40,24 +37,51 @@ void ClientesPedidos(clientes * cliente, int id){
 	}
 }
 
-void RealizarPedido(){
-	FILE *fichero;
-	char id_pedido[8],fecha[11],id_cliente[8],lugar[10],id_locker[11],id_cod[11];
-	printf("Introduzca el identificador del pedido: ");
-	scanf("%s",id_pedido);
+void RealizarPedido(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+	system("cls");
+    char cadena[11];
+    sprintf(cadena, "%11d", (*numpedidos)+1);
+    strcpy(pedido[*numpedidos].id_pedido,cadena);
 	printf("Introduzca la fecha del pedido: ");
-	scanf("%s",fecha);
+	sprintf(cadena, "%11d", (*numpedidos)+1);
+    strcpy(pedido[*numpedidos].fecha_pedido,cadena);
 	printf("Introduzca el identificador del cliente: ");
-	scanf("%s",id_cliente);
+	sprintf(cadena, "%11d", (*numpedidos)+1);
+    strcpy(pedido[*numpedidos].id_cliente,cadena);
 	printf("Introduzca el lugar de entrega: ");
-	scanf("%s",lugar);
+	sprintf(cadena, "%11d", (*numpedidos)+1);
+    strcpy(pedido[*numpedidos].lugar,cadena);
 	printf("Introduzca el identificador del locker: ");
-	scanf("%s",id_locker);
+	sprintf(cadena, "%11d", (*numpedidos)+1);
+    strcpy(pedido[*numpedidos].id_locker,cadena);
 	printf("Introduzca el identificador del codigo promocional: ");
-	scanf("%s",id_cod);
-	fichero=fopen("Pedidos.txt","a");
-	fprintf(fichero,"%s-%s-%s-%s-%s-%s\n",id_pedido,fecha,id_cliente,lugar,id_locker,id_cod);
-	fclose(fichero);
+	sprintf(cadena, "%11d", (*numpedidos)+1);
+    strcpy(pedido[*numpedidos].id_cod,cadena);
+
+	int i;
+    int exit=0;
+    for (i = 0; i < *numpedidos && exit == 0; i++)
+    {
+        if (strcmp(pedido[i].id_pedido, cadena) == 0)
+        {
+            int j;
+            for (j = i; j < *numpedidos - 1; j++)
+            {
+                if(strcmp(pedido[i].id_pedido,productopedido[j].id_pedido)==0){
+					int k;
+					for(k=1;k<=*numproductos;k++){
+						if(strcmp(productopedido[j].id_prod,producto[k].id_prod)==0){
+							producto[k].stock=producto[k].stock-productopedido[j].num_unid;
+						}
+					}
+						
+					(*numpedidos)++;
+				}
+            }
+            exit=1;
+        }
+
+
 }
 
 void EliminarPedido(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
@@ -89,55 +113,52 @@ void EliminarPedido(pedidos *pedido,productos_pedidos *productopedido,productos 
         }
 }
 
-void ConsultarPedido(){
-	FILE *fichero;
-	char id_pedido[8],id_pedido2[8],fecha[11],id_cliente[8],lugar[10],id_locker[11],id_cod[11];
-	printf("Introduzca el identificador del pedido a consultar: ");
-	scanf("%s",id_pedido);
-	fichero=fopen("Pedidos.txt","r");
-	while(fscanf(fichero,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod)!=EOF){
-		if(strcmp(id_pedido,id_pedido2)==0){
-			printf("Identificador del pedido: %s\n",id_pedido2);
-			printf("Fecha del pedido: %s\n",fecha);
-			printf("Identificador del cliente: %s\n",id_cliente);
-			printf("Lugar de entrega: %s\n",lugar);
-			printf("Identificador del locker: %s\n",id_locker);
-			printf("Identificador del codigo promocional: %s\n",id_cod);
-		}
-	}
-	fclose(fichero);
+void ConsultarPedido(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+	 int id;
+
+    printf("Introduce el id del pedido a consultar: ");
+    scanf("%d", &id);
+    id--;
+
+    system("cls");
+	printf("ID Pedido\n");
+    printf(" %s\n", pedido[id].id_pedido);
+    printf("Fecha Pedido\n");
+	printf("%s\n", pedido[id].fecha_pedido);
+	printf("ID Cliente\n");
+	printf("%s\n", pedido[id].id_cliente);
+	printf("Lugar de Entrega\n");
+	printf("%s\n", pedido[id].lugar);
+	printf("ID Locker\n");
+	printf("%s\n", pedido[id].id_locker);
+	printf("ID Codigo Promocional\n");
+	printf("%s\n", pedido[id].id_cod);
+
+    
+    
+    system("pause");
+    system("cls");
+
 }
 
-void ModificarPedido(){
-	FILE *fichero,*fichero2;
-	char id_pedido[8],id_pedido2[8],fecha[11],id_cliente[8],lugar[10],id_locker[11],id_cod[11];
-	printf("Introduzca el identificador del pedido a modificar: ");
-	scanf("%s",id_pedido);
-	fichero=fopen("Pedidos.txt","r");
-	fichero2=fopen("Pedidos2.txt","w");
-	while(fscanf(fichero,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod)!=EOF){
-		if(strcmp(id_pedido,id_pedido2)==0){
-			printf("Introduzca el identificador del pedido: ");
-			scanf("%s",id_pedido);
-			printf("Introduzca la fecha del pedido: ");
-			scanf("%s",fecha);
-			printf("Introduzca el identificador del cliente: ");
-			scanf("%s",id_cliente);
-			printf("Introduzca el lugar de entrega: ");
-			scanf("%s",lugar);
-			printf("Introduzca el identificador del locker: ");
-			scanf("%s",id_locker);
-			printf("Introduzca el identificador del codigo promocional: ");
-			scanf("%s",id_cod);
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido,fecha,id_cliente,lugar,id_locker,id_cod);
-		}else{
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod);
-		}
-	}
-	fclose(fichero);
-	fclose(fichero2);
-	remove("Pedidos.txt");
-	rename("Pedidos2.txt","Pedidos.txt");
+void ModificarPedido(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+	int id;
+
+    printf("Introduce el id del pedido a modificar: ");
+    scanf("%d", &id);
+    id--;
+	 printf("Introduzca la nueva fecha): ");
+    gets(pedido[id].fecha_pedido);
+	printf("Introduzca el nuevo id del cliente: ");
+	gets(pedido[id].id_cliente);
+	printf("Introduzca el nuevo lugar de entrega: ");
+	gets(pedido[id].lugar);
+	printf("Introduzca el nuevo id del locker: ");
+	gets(pedido[id].id_locker);
+	printf("Introduzca el nuevo id del codigo promocional: ");
+	gets(pedido[id].id_cod);
+    system("cls");
+	
 }
 
 //AdminPedidos: Mediante el menú correspondiente podrá realizar altas, bajas, búsquedas, listados ymodificaciones de pedidos.Asi como asignar transportistas a los pedidos y asignar lockers a los pedidos.
