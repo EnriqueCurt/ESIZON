@@ -27,7 +27,7 @@ void ClientesPedidos(clientes * cliente, int id){
 			ConsultarPedido();
 			break;
 		case 4:
-			ModificarPedido();
+			ModificarPedidoPropioCliente();
 			break;
 		case 5:
 			break;
@@ -141,12 +141,18 @@ void ConsultarPedido(pedidos *pedido,productos_pedidos *productopedido,productos
 
 }
 
-void ModificarPedido(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+void ModificarPedidoAdmin(pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
 	int id;
+	char cad;
 
-    printf("Introduce el id del pedido a modificar: ");
-    scanf("%d", &id);
-    id--;
+	printf("Introduce el id del pedido a modificar: ");
+	scanf("%s", &cad);
+	for(id=0;id<*numpedidos;id++){
+		if(strcmp(pedido[id].id_pedido,cad)==0){
+			break;
+		}
+	})
+	id--;
 	 printf("Introduzca la nueva fecha): ");
     gets(pedido[id].fecha_pedido);
 	printf("Introduzca el nuevo id del cliente: ");
@@ -160,7 +166,72 @@ void ModificarPedido(pedidos *pedido,productos_pedidos *productopedido,productos
     system("cls");
 	
 }
+//void ModificarPedidoPropio cumple la misma funcion que ModificarPedido,pero solo los del mismo usuario,y no de otros.
+void ModificarPedidoPropioCliente(clientes *cliente,int *numclientes,pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+	int id,s;
+	char cad;
 
+	printf("Introduce el id del pedido a modificar: ");
+	scanf("%s", &cad);
+	for(id=0;id<*numpedidos;id++){
+		if(strcmp(pedido[id].id_pedido,cad)==0){
+			break;
+		}
+	})
+	id--;
+	for(s=0;s<*numclientes;s++){
+		if(strcmp(cliente[s].id_cliente,pedido[id].id_cliente)==0){
+			printf("Introduzca la nueva fecha): ");
+	gets(pedido[id].fecha_pedido);
+	printf("Introduzca el nuevo id del cliente: ");
+	gets(pedido[id].id_cliente);
+	printf("Introduzca el nuevo lugar de entrega: ");
+	gets(pedido[id].lugar);
+	printf("Introduzca el nuevo id del locker: ");
+	gets(pedido[id].id_locker);
+	printf("Introduzca el nuevo id del codigo promocional: ");
+	gets(pedido[id].id_cod);
+	system("cls");
+
+		}else{
+			printf("No puedes modificar pedidos de otros clientes\n");
+		}}
+	 
+	
+}
+
+void ModificarPedidoPropioTransportista(transportistas *transportista,int *numtransportista,pedidos *pedido,productos_pedidos *productopedido,productos *producto,int *numpedidos,int *numproductos,int id){
+	int id,s;
+	char cad;
+
+	printf("Introduce el id del pedido a modificar: ");
+	scanf("%s", &cad);
+	for(id=0;id<*numtransportista;id++){
+		if(strcmp(pedido[id].id_pedido,cad)==0){
+			break;
+		}
+	})
+	id--;
+	for(s=0;s<*numtransportista;s++){
+		if(strcmp(transportista[s].id_transp,pedido[id].id_cliente)==0){
+			printf("Introduzca la nueva fecha): ");
+	gets(pedido[id].fecha_pedido);
+	printf("Introduzca el nuevo id del cliente: ");
+	gets(pedido[id].id_cliente);
+	printf("Introduzca el nuevo lugar de entrega: ");
+	gets(pedido[id].lugar);
+	printf("Introduzca el nuevo id del locker: ");
+	gets(pedido[id].id_locker);
+	printf("Introduzca el nuevo id del codigo promocional: ");
+	gets(pedido[id].id_cod);
+	system("cls");
+
+		}else{
+			printf("No puedes modificar pedidos de otros transportistas\n");
+		}}
+	 
+	
+}
 //AdminPedidos: Mediante el menú correspondiente podrá realizar altas, bajas, búsquedas, listados ymodificaciones de pedidos.Asi como asignar transportistas a los pedidos y asignar lockers a los pedidos.
 
 void AdminPedidos(admin_prov * admin, int id){
@@ -185,7 +256,7 @@ void AdminPedidos(admin_prov * admin, int id){
 			ConsultarPedido();
 			break;
 		case 4:
-			ModificarPedido();
+			ModificarPedidoAdmin();
 			break;
 		case 5:
 			AsignarTransportista();
@@ -201,69 +272,51 @@ void AdminPedidos(admin_prov * admin, int id){
 	}
 }
 
-void AsignarLocker(){
-	FILE *fichero,*fichero2;
-	char id_pedido[8],id_pedido2[8],fecha[11],id_cliente[8],lugar[10],id_locker[11],id_cod[11];
+void AsignarLocker(clientes *cliente,int *numclientes,pedidos *pedido,int *numpedidos,lockers *locker,descuentos_clientes *promocion){
+	char pedi;
 	printf("Introduzca el identificador del pedido a asignar locker: ");
-	scanf("%s",id_pedido);
-	fichero=fopen("Pedidos.txt","r");
-	fichero2=fopen("Pedidos2.txt","w");
-	while(fscanf(fichero,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod)!=EOF){
-		if(strcmp(id_pedido,id_pedido2)==0){
-			printf("Introduzca el identificador del pedido: ");
-			scanf("%s",id_pedido);
-			printf("Introduzca la fecha del pedido: ");
-			scanf("%s",fecha);
-			printf("Introduzca el identificador del cliente: ");
-			scanf("%s",id_cliente);
-			printf("Introduzca el lugar de entrega: ");
-			scanf("%s",lugar);
-			printf("Introduzca el identificador del locker: ");
-			scanf("%s",id_locker);
-			printf("Introduzca el identificador del codigo promocional: ");
-			scanf("%s",id_cod);
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido,fecha,id_cliente,lugar,id_locker,id_cod);
-		}else{
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod);
+	scanf("%s",pedi);
+	int i;
+	for(i=0;i<*numpedidos;i++){
+		if(strcmp(pedido[i].id_pedido,pedi)==0){
+			break;
 		}
 	}
-	fclose(fichero);
-	fclose(fichero2);
-	remove("Pedidos.txt");
-	rename("Pedidos2.txt","Pedidos.txt");
+	printf("Introduzca el identificador del locker: ");
+	scanf("%s",pedido[i].id_locker);
+	printf("Introduzca el identificador del codigo promocional: ");
+	scanf("%s",pedido[i].id_cod);
+	printf("Introduzca el identificador del cliente: ");
+	scanf("%s",pedido[i].id_cliente);
+	printf("Introduzca el lugar de entrega: ");
+	scanf("%s",pedido[i].lugar);
+	printf("Introduzca el identificador del locker: ");
+	scanf("%s",pedido[i].id_locker);
+	printf("Introduzca la fecha del pedido: ");
+	scanf("%s",pedido[i].fecha_pedido);
 
 }
 
-void AsignarTransportista (){
-	FILE *fichero,*fichero2;
-	char id_pedido[8],id_pedido2[8],fecha[11],id_cliente[8],lugar[10],id_locker[11],id_cod[11];
+void AsignarTransportista (pedidos *pedido,int *numpedidos,transportistas *transportista){
+	char pedi;
 	printf("Introduzca el identificador del pedido a asignar transportista: ");
-	scanf("%s",id_pedido);
-	fichero=fopen("Pedidos.txt","r");
-	fichero2=fopen("Pedidos2.txt","w");
-	while(fscanf(fichero,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod)!=EOF){
-		if(strcmp(id_pedido,id_pedido2)==0){
-			printf("Introduzca el identificador del pedido: ");
-			scanf("%s",id_pedido);
-			printf("Introduzca la fecha del pedido: ");
-			scanf("%s",fecha);
-			printf("Introduzca el identificador del cliente: ");
-			scanf("%s",id_cliente);
-			printf("Introduzca el lugar de entrega: ");
-			scanf("%s",lugar);
-			printf("Introduzca el identificador del locker: ");
-			scanf("%s",id_locker);
-			printf("Introduzca el identificador del codigo promocional: ");
-			scanf("%s",id_cod);
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido,fecha,id_cliente,lugar,id_locker,id_cod);
-		}else{
-			fprintf(fichero2,"%s-%s-%s-%s-%s-%s\n",id_pedido2,fecha,id_cliente,lugar,id_locker,id_cod);
+	scanf("%s",pedi);
+	int i;
+	for(i=0;i<*numpedidos;i++){
+		if(strcmp(pedido[i].id_pedido,pedi)==0){
+			break;
 		}
 	}
-	fclose(fichero);
-	fclose(fichero2);
-	remove("Pedidos.txt");
-	rename("Pedidos2.txt","Pedidos.txt");
+	printf("Introduzca el identificador del transportista: ");
+	scanf("%s",transportista[i].id_transp);
+	printf("Introduzca el nombre del transportista: ");
+	scanf("%s",transportista[i].nombre);
+	printf("Introduzca el email del transportista: ");
+	scanf("%s",transportista[i].email);
+	printf("Introduzca la empresa del transportista: ");
+	scanf("%s",transportista[i].empresa);
+	printf("Introduzca la ciudad en que opera del transportista: ");
+	scanf("%s",transportista[i].ciudad);
 }
 
 
@@ -281,7 +334,7 @@ void ProveedorPedidos(transportistas * transportista, int id){
 			ConsultarPedido();
 			break;
 		case 2:
-			ModificarPedido();
+			ModificarPedidoPropioTransportista();
 			break;
 		case 3:
 			AsignarTransportista();
@@ -296,3 +349,8 @@ void ProveedorPedidos(transportistas * transportista, int id){
 			break;
 	}
 }
+
+
+
+
+    
