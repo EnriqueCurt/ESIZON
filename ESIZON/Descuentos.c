@@ -9,7 +9,7 @@ void listarDescuentosCliente(descuentos_clientes *descuentosclientes, int numdes
 {
     system("cls");
     char cadena[8];
-    sprintf(cadena, "%08d", id+1);
+    sprintf(cadena, "%07d", id+1);
     int i;
     for(i=0; i<numdescuentosclientes; i++)
     {
@@ -19,9 +19,10 @@ void listarDescuentosCliente(descuentos_clientes *descuentosclientes, int numdes
             printf("\nID del codigo de descuento: %s", descuentosclientes[i].id_cod);
             printf("\nFecha de asignacion: %s", descuentosclientes[i].fecha_asignacion);
             printf("\nFecha de caducidad: %s", descuentosclientes[i].fecha_caducidad);
-            printf("\nEstado: %d", descuentosclientes[i].estado);
+            printf("\nEstado: %d \n\n", descuentosclientes[i].estado);
         }
     }
+    system("pause");
 
 }
 
@@ -166,9 +167,10 @@ void busquedaDescuento(descuentos *descuentos, int numdescuentos)
             printf("\nTipo del descuento: %s", descuentos[i].tipo);
             printf("\nEstado del descuento: %s", descuentos[i].estado);
             printf("\nImporte del descuento: %d", descuentos[i].importe);
-            printf("\nTipo de aplicacion del descuento: %s", descuentos[i].aplicable);
+            printf("\nTipo de aplicacion del descuento: %s\n\n", descuentos[i].aplicable);
         }
     }
+    system("pause");
 }
 
 void listarDescuentos(descuentos *descuentos, int numdescuentos)
@@ -182,8 +184,9 @@ void listarDescuentos(descuentos *descuentos, int numdescuentos)
         printf("\nTipo del descuento: %s", descuentos[i].tipo);
         printf("\nEstado del descuento: %s", descuentos[i].estado);
         printf("\nImporte del descuento: %d", descuentos[i].importe);
-        printf("\nTipo de aplicacion del descuento: %s", descuentos[i].aplicable);
+        printf("\nTipo de aplicacion del descuento: %s\n\n", descuentos[i].aplicable);
     }
+    system("pause");
 }
 
 void listarClientesConDescuentos(descuentos_clientes *descuentosclientes, int numdescuentosclientes)
@@ -196,8 +199,9 @@ void listarClientesConDescuentos(descuentos_clientes *descuentosclientes, int nu
         printf("\nID del codigo de descuento: %s", descuentosclientes[i].id_cod);
         printf("\nFecha de asignacion: %s", descuentosclientes[i].fecha_asignacion);
         printf("\nFecha de caducidad: %s", descuentosclientes[i].fecha_caducidad);
-        printf("\nEstado: %d", descuentosclientes[i].estado);
+        printf("\nEstado: %d \n\n", descuentosclientes[i].estado);
     }
+    system("pause");
 }
 
 void listarClientesConDescuentosUsados(descuentos_clientes *descuentosclientes, int numdescuentosclientes)
@@ -212,9 +216,10 @@ void listarClientesConDescuentosUsados(descuentos_clientes *descuentosclientes, 
             printf("\nID del codigo de descuento: %s", descuentosclientes[i].id_cod);
             printf("\nFecha de asignacion: %s", descuentosclientes[i].fecha_asignacion);
             printf("\nFecha de caducidad: %s", descuentosclientes[i].fecha_caducidad);
-            printf("\nEstado: %d", descuentosclientes[i].estado);
+            printf("\nEstado: %d \n\n", descuentosclientes[i].estado);
         }
     }
+    system("pause");
 }
 void asignarDescuentoCliente(descuentos_clientes *descuentosclientes, int *numdescuentosclientes)
 {

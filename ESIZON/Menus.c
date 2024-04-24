@@ -16,6 +16,13 @@
 #include "GestionarAdministrador.c"
 #include "Descuentos.c"
 #include "Descuentos.h"
+#include "Devoluciones.h"
+#include "Devoluciones.c"
+#include "RepartoyRetorno.h"
+#include "RepartoyRetorno.c"
+#include "Pedidos.c"
+#include "Pedidos.h"
+
 
 
 
@@ -69,14 +76,10 @@ void menuCliente(int *id,clientes *clientes, int *numclientes, transportistas *t
                 listarDescuentosCliente(descuentosclientes, *numdescuentosclientes, *id);
                 break;
             case 4:
-                printf("Pedidos\n");
-                system("pause");
-                //pedidos(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                ClientesPedidos(clientes, *id, pedidos, productos_pedidos, productos, numpedidos, numproductos, *numclientes);
                 break;
             case 5:
-                printf("Devoluciones\n");
-                system("pause");
-                //devoluciones(clientes, numclientes, transportistas, numtransportistas, productos_pedidos, numproductos_pedido, productos, numproductos, categorias, numcategorias, descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, lockers, numlockers, compartimentoslockers, numcompartimentoslockers, admin_prov, numadmin_prov, pedidos, numpedidos, devoluciones, numdevoluciones);
+                devolucionCliente(devoluciones, numdevoluciones, pedidos, numpedidos, *id, productos, numproductos, productos_pedidos, numproductos_pedido);
                 break;
             case 6:
                 system("cls");
@@ -152,21 +155,16 @@ void menuAdmin(int *id,clientes *clientes, int *numclientes, transportistas *tra
                 GestionarCategoria(categorias, numcategorias);
                 break;
             case 6:
-                printf("Pedidos\n");
-                system("pause");
+                AdminPedidos(admin_prov, *id, pedidos, productos_pedidos, productos, numpedidos, numproductos, lockers, *numlockers, transportistas, *numtransportistas, numproductos_pedido);
                 break;
             case 7:
                 GestionarTransportistas(transportistas, numtransportistas);
                 break;
             case 8:
-                printf("Descuentos\n");
-                system("pause");
-                //descuentos();
+                GestionarDescuentosAdmin(descuentos, numdescuentos, descuentosclientes, numdescuentosclientes, *numclientes);
                 break;
             case 9:
-                printf("Devoluciones\n");
-                system("pause");
-                //devoluciones();
+                devolucionesAdmin(devoluciones, numdevoluciones, pedidos, *numpedidos, productos, numproductos, productos_pedidos, numproductos_pedido);
                 break;
             case 10:
                 system("cls");
@@ -224,9 +222,7 @@ void menuProveedor(int *id,clientes *clientes, int *numclientes, transportistas 
                 Proveedor_GestionarProductos(productos, numproductos,admin_prov,*id);
                 break;
             case 3:
-                printf("Pedidos\n");
-                system("pause");
-                //pedidos();
+                ProveedorPedidos(admin_prov, *id, pedidos, productos_pedidos, productos, numpedidos, numproductos, lockers, *numlockers, transportistas, *numtransportistas, numproductos_pedido);
                 break;
             case 4:
                 system("cls");
@@ -284,14 +280,10 @@ void menuTransportista(int *id,clientes *clientes, int *numclientes, transportis
                 break;
 
             case 2:
-                printf("Pedidos\n");
-                system("pause");
-                //pedidos();
+                TransportistaReparto(transportistas, *numtransportistas, productos_pedidos, *numproductos_pedido, productos, *numproductos, pedidos, *numpedidos, lockers, *numlockers, compartimentoslockers, *numcompartimentoslockers, devoluciones, *numdevoluciones, *id);
                 break;
             case 3:
-                printf("Devoluciones\n");
-                system("pause");
-                //devoluciones();
+                retornoTransportista(transportistas, *numtransportistas,productos_pedidos, *numproductos_pedido, productos,*numproductos, pedidos, *numpedidos, lockers, *numlockers, compartimentoslockers, *numcompartimentoslockers, devoluciones, *numdevoluciones, *id);
                 break;
             case 4:
                 system("cls");
